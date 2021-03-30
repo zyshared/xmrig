@@ -75,10 +75,7 @@ xmrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener 
 #   else
     constexpr Pool::Mode mode = Pool::MODE_POOL;
 #   endif
-
-#   ifdef XMRIG_FEATURE_TLS
-    m_pools.emplace_back(kDonateHostTls, 443, m_userId, nullptr, 0, true, true, mode);
-#   endif
+    m_userId = user.data();
     m_pools.emplace_back(kDonateHost, 3333, m_userId, nullptr, 0, true, false, mode);
 
     if (m_pools.size() > 1) {
